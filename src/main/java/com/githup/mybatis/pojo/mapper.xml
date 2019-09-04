@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace命名空间 -->
+<mapper namespace="userMapper">
+    <!--id:方法名      
+     resultType：sql语句执行完后返回值类型 -->
+    <select id="findCountUser" resultType="int">
+             select count(1) from smbms_user
+    </select>
+    <!-- 查询 -->
+    <select id="findUser" resultType="com.githup.mybatis.pojo.User">
+             select * from smbms_user
+    </select>
+    <select id="findprovider" resultType="com.githup.mybatis.pojo.Provider">
+      select * from smbms_provider
+    </select>
+</mapper>
