@@ -1,8 +1,7 @@
 import com.githup.mybatis.pojo.Provider;
 import com.githup.mybatis.pojo.User;
-import com.githup.mybatis.util.sqlsessionUtil;
+import com.githup.mybatis.util.SqlSessionUtil;
 import org.apache.ibatis.session.SqlSession;
-
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,7 +11,7 @@ public class Test {
 public static void main(String[] args) {
 	InputStream is;
 	try {
-		SqlSession sqlSession = sqlsessionUtil.getSqlsession();
+		SqlSession sqlSession = SqlSessionUtil.getSqlsession();
 		//执行配置文件中的sql语句  填命名空间.方法名(查询次数)
 		int count = sqlSession.selectOne("userMapper.findCountUser");
 		
