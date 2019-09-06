@@ -3,13 +3,42 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.githup.mybatis.dao.UserMapper">
-   <!--List<User> findUser()-->
+    <!--List<User> findUser()-->
     <select id="findUser" resultType="user">
         select * from smbms_user
     </select>
 
     <!--User findUserByUserName(String name);-->
     <select id="findUserByUserName" resultType="user" parameterType="String">
-        select * from ;
+        select * from smbms_user where userName like Concat('%',#{name},'%');
     </select>
+
+    <select id="findUserByUserNameAndUserRole" resultType="user" parameterType="user">
+        select *
+          from smbms_user
+            where userName
+            like Concat('%',#{userName},'%')
+              and userRole=#{userRole};
+    </select>
+
+    <!--findUserByMap-->
+    <select id="findUserByMap" resultType="user" parameterType="user">
+         select *
+          from smbms_user
+            where userName
+            like Concat('%',#{userName},'%')
+              and userRole=#{userRole};
+    </select>
+
+
+    <!--User findUserByUserNameAndUserRole1(@Param("userName") String name, @Param("userRole")int role);-->
+    <select id="findUserByUserNameAndUserRole1" resultType="user">
+        select *,(select roleName from smbms_role where id=#{userRole})
+          from smbms_user
+            where userName like Concat('%',#{userName},'%')
+              and userRole = #{userRole}
+    </select>
+
+
+
 </mapper>

@@ -3,6 +3,7 @@ package com.githup.mybatis.pojo;
 import java.util.Date;
 
 public class Provider {
+
    private int id;
    private String proCode;
    private String proName;
